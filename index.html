@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contactless — The Architecture of Seamless Proximity</title>
+  <meta name="description" content="Pioneering luxury NFC hardware, bespoke contactless smart cards, architectural RFID systems, and invisible proximity technology.">
+  
+  <!-- Preconnect and Load Fonts: Inter & Great Vibes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="icon" type="image/png" href="assets/logo-icon-white-tight.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="assets/cards-data.js"></script>
+</head>
+<body class="bg-void text-primary antialiased selection:bg-white selection:text-black">
+
+  <!-- Ambient Electromagnetic Signal Field (Canvas Background) -->
+  <canvas id="ambient-canvas" class="ambient-canvas" aria-hidden="true"></canvas>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- Custom Proximity Cursor -->
+  <div id="custom-cursor" class="custom-cursor" aria-hidden="true">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+    <div class="cursor-wave"></div>
+  </div>
+
+  <!-- Main Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-link" aria-label="Contactless Home">
+        <div class="brand-logo-wrap">
+          <img src="assets/logo-full-white-tight.png" alt="Contactless Logo" class="brand-wordmark" />
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="nav-menu" id="nav-menu" aria-label="Primary Navigation">
+        <a href="#showcase" class="nav-link">The Vault</a>
+        <a href="#terminal" class="nav-link">Interactive Tap</a>
+        <a href="#solutions" class="nav-link">Solutions</a>
+        <a href="#configurator" class="nav-link">Custom Studio</a>
+        <a href="#technology" class="nav-link">NFC Tech</a>
+      </nav>
+
+      <!-- Action Items -->
+      <div class="nav-actions">
+        <!-- Sound Effect Toggle -->
+        <button id="sound-toggle" class="icon-btn" aria-label="Toggle tactile sound effects" title="Toggle audio feedback">
+          <svg class="sound-icon-on" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+          </svg>
+          <svg class="sound-icon-off hidden" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+        </button>
+
+        <a href="#configurator" class="btn-primary-sm">
+          <span>Initiate Project</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+
+        <!-- Mobile Hamburger -->
+        <button id="mobile-toggle" class="mobile-toggle" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-drawer" class="mobile-drawer">
+    <nav class="mobile-nav-links">
+      <a href="#showcase" class="mobile-link">The Vault</a>
+      <a href="#terminal" class="mobile-link">Interactive Tap Terminal</a>
+      <a href="#solutions" class="mobile-link">Solutions & Hardware</a>
+      <a href="#configurator" class="mobile-link">Custom Studio</a>
+      <a href="#technology" class="mobile-link">NFC Engineering</a>
+      <a href="#configurator" class="btn-primary mt-6">Initiate Bespoke Project</a>
+    </nav>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        
+        <!-- Left: Hero Statement & Typography -->
+        <div class="hero-content">
+          <h1 class="hero-title">
+            The architecture of <br>
+            <span class="font-script accent-script">seamless</span> proximity.
+          </h1>
+
+          <p class="hero-subtitle">
+            We engineer high-grade contactless physical credentials, architectural RFID nodes, and secure cryptographic NFC experiences for visionary brands and institutions worldwide.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#terminal" class="btn-primary">
+              <span class="btn-wave-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M6 9a9 9 0 0 1 0 6"></path>
+                  <path d="M10 7a6 6 0 0 1 0 10"></path>
+                  <circle cx="15" cy="12" r="1.5" fill="currentColor"></circle>
+                </svg>
+              </span>
+              <span>Test Interactive Tap</span>
+            </a>
+            
+            <a href="#showcase" class="btn-secondary">
+              <span>Explore The Vault (50+ Designs)</span>
+            </a>
+          </div>
+
+          <!-- Specs Strip in Hero -->
+          <div class="hero-metrics">
+            <div class="metric-item">
+              <div class="metric-val">&lt; 10<span class="metric-unit">ms</span></div>
+              <div class="metric-lbl">Contactless Handshake</div>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <div class="metric-val">13.56<span class="metric-unit">MHz</span></div>
+              <div class="metric-lbl">High-Frequency Carrier</div>
+            </div>
+            <div class="metric-divider"></div>
+            <div class="metric-item">
+              <div class="metric-val">EAL6<span class="metric-unit">+</span></div>
+              <div class="metric-lbl">Cryptographic Secure Core</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: 3D Interactive Hero Card & Tap Trigger -->
+        <div class="hero-visual">
+          <div class="card-3d-scene" id="hero-card-scene">
+            <div class="card-3d-wrapper" id="hero-card-tilt">
+              <div class="card-3d-face">
+                <img id="hero-card-img" src="images/CardArt-titanium-v8-2-lhN26PvF96.png" alt="Contactless Flagship Metal NFC Card" class="card-art-img" />
+                <div class="card-specular-glare" id="hero-card-glare"></div>
+                <div class="card-nfc-indicator">
+                  <div class="nfc-mini-wave">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Signal Ripple Visualizer Container -->
+            <div class="hero-signal-emitter" id="hero-signal-emitter" aria-hidden="true"></div>
+          </div>
+
+          <!-- Hero Card Quick Selector Bar -->
+          <div class="hero-card-controls">
+            <div class="control-label">
+              <span class="text-xs uppercase tracking-wider text-muted">Flagship Edition:</span>
+              <span id="hero-card-name" class="font-semibold text-white">Titanium V8 Contactless</span>
+            </div>
+            <div class="hero-card-thumbnails" id="hero-card-thumbnails">
+              <!-- Dynamically populated with top flagship cards -->
+            </div>
+            
+            <button id="hero-tap-btn" class="btn-tap-simulate" title="Simulate Contactless Tap">
+              <span class="tap-ring"></span>
+              <span class="tap-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 8a12 12 0 0 1 0 8"></path>
+                  <path d="M8 6a8 8 0 0 1 0 12"></path>
+                  <path d="M12 4a5 5 0 0 1 0 16"></path>
+                  <circle cx="16" cy="12" r="2" fill="currentColor"></circle>
+                </svg>
+              </span>
+              <span class="tap-text">Simulate 13.56 MHz Tap</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Scroll Indicator -->
+      <a href="#showcase" class="scroll-cue" aria-label="Scroll down">
+        <span class="cue-label">Explore Showcase</span>
+        <div class="cue-line"></div>
+      </a>
+    </section>
+
+    <!-- SECTION: THE VAULT / CARD GALLERY (Uses images from images/) -->
+    <section class="section vault-section" id="showcase">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <span>THE CURATED VAULT</span>
+          </div>
+          <h2 class="section-title">
+            Masterpieces of <span class="font-script accent-script">tactile</span> engineering.
+          </h2>
+          <p class="section-desc max-w-2xl mx-auto">
+            Browse our comprehensive portfolio of precision-manufactured NFC cards, smart credentials, bespoke metal finishes, and exclusive limited editions.
+          </p>
+        </div>
+
+        <!-- Filter & Search Controls -->
+        <div class="vault-filter-toolbar">
+          <div class="filter-tabs" id="filter-tabs" role="tablist">
+            <button class="filter-tab active" data-filter="all">All Editions (<span id="count-all">0</span>)</button>
+            <button class="filter-tab" data-filter="Stealth & Luxury">Stealth &amp; Luxury</button>
+            <button class="filter-tab" data-filter="Liquid & Glass">Liquid &amp; Glass</button>
+            <button class="filter-tab" data-filter="FinTech & Identity">FinTech &amp; Identity</button>
+            <button class="filter-tab" data-filter="Pop Culture & Editions">Pop Culture</button>
+            <button class="filter-tab" data-filter="Minimalist Series">Minimalist</button>
+          </div>
+
+          <div class="vault-search-box">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="vault-search-input" placeholder="Search by name, material, or chip..." aria-label="Search card editions" />
+            <button id="search-clear-btn" class="search-clear-btn hidden" aria-label="Clear search">&times;</button>
+          </div>
+        </div>
+
+        <!-- Card Grid -->
+        <div class="cards-grid" id="cards-grid">
+          <!-- Dynamically populated from assets/cards-data.js -->
+        </div>
+
+        <!-- Pagination / Load More button -->
+        <div class="text-center mt-12" id="load-more-container">
+          <button id="load-more-btn" class="btn-secondary">
+            <span>Load More Editions</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: INTERACTIVE TAP TERMINAL (The Live Contactless Reader Simulator) -->
+    <section class="section terminal-section" id="terminal">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <span>LIVE INTERACTIVE LAB</span>
+          </div>
+          <h2 class="section-title">
+            The Contactless <span class="font-script accent-script">terminal</span>.
+          </h2>
+          <p class="section-desc max-w-2xl mx-auto">
+            Experience our near-instant radio frequency coupling. Select any card below or drag it onto the NFC sensor to trigger a real-time cryptographic payload handshake.
+          </p>
+        </div>
+
+        <div class="terminal-stage">
+          <!-- Terminal Pad Device (The physical reader monolith) -->
+          <div class="terminal-device" id="terminal-device">
+            <div class="terminal-rim">
+              <div class="terminal-surface" id="terminal-surface">
+                
+                <!-- Concentric laser rings -->
+                <div class="target-rings" aria-hidden="true">
+                  <div class="ring ring-3"></div>
+                  <div class="ring ring-2"></div>
+                  <div class="ring ring-1"></div>
+                </div>
+
+                <!-- Central Contactless Symbol with Pulsing Radios -->
+                <div class="terminal-core" id="terminal-core">
+                  <div class="core-wave wave-1"></div>
+                  <div class="core-wave wave-2"></div>
+                  <div class="core-wave wave-3"></div>
+                  <div class="terminal-brand-mark">
+                    <img src="assets/logo-icon-white-tight.png" alt="Contactless Sensor Icon" class="terminal-icon-img" />
+                  </div>
+                </div>
+
+                <!-- Live Status LED & Prompt -->
+                <div class="terminal-status-indicator">
+                  <span class="status-beacon" id="terminal-beacon"></span>
+                  <span class="status-label" id="terminal-status-label">STANDBY // HOVER OR TAP CARD</span>
+                </div>
+
+                <!-- Holographic Drop Target Cue -->
+                <div class="drop-hint" id="drop-hint">
+                  <span>CLICK OR TAP ON PAD</span>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Terminal Chassis Details -->
+            <div class="terminal-base-bar">
+              <div class="terminal-id">READER ID: CTLS-NODE-X1</div>
+              <div class="terminal-frequency">13.56 MHz // ISO/IEC 14443-A</div>
+              <div class="terminal-security">AES-128 CMAC ACTIVE</div>
+            </div>
+          </div>
+
+          <!-- Live NFC Handshake Diagnostics Monitor -->
+          <div class="terminal-console">
+            <div class="console-header">
+              <div class="console-title">
+                <span class="console-led"></span>
+                <span>CRYPTOGRAPHIC PAYLOAD MONITOR</span>
+              </div>
+              <div class="console-latency" id="console-latency">LATENCY: -- ms</div>
+            </div>
+
+            <div class="console-body">
+              <div class="console-line">
+                <span class="console-key">PROTOCOL:</span>
+                <span class="console-val" id="diag-protocol">ISO/IEC 14443 Type A</span>
+              </div>
+              <div class="console-line">
+                <span class="console-key">CHIP TYPE:</span>
+                <span class="console-val" id="diag-chip">NTAG424 DNA (High Security)</span>
+              </div>
+              <div class="console-line">
+                <span class="console-key">UNIQUE UID:</span>
+                <span class="console-val text-white font-mono" id="diag-uid">04:8A:2F:5C:9E:01:80</span>
+              </div>
+              <div class="console-line">
+                <span class="console-key">CARD EDITION:</span>
+                <span class="console-val text-white" id="diag-title">Titanium V8 Contactless</span>
+              </div>
+              <div class="console-line">
+                <span class="console-key">MATERIAL:</span>
+                <span class="console-val" id="diag-material">Brushed Space Titanium</span>
+              </div>
+              <div class="console-line">
+                <span class="console-key">TAMPER CHECK:</span>
+                <span class="console-val text-green" id="diag-tamper">VERIFIED // INTEGRITY OK</span>
+              </div>
+              <div class="console-line console-payload-box">
+                <span class="console-key">PAYLOAD ACTION:</span>
+                <div class="console-val font-mono payload-text" id="diag-action">
+                  https://contactless.id/auth/v8-secure-node
+                </div>
+              </div>
+            </div>
+
+            <!-- Interactive Terminal Actions -->
+            <div class="console-footer">
+              <button id="terminal-trigger-action" class="btn-console-action">
+                <span>Trigger Transmitted Payload</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminal Quick Select Card Carousel -->
+        <div class="terminal-deck-tray">
+          <div class="tray-header">
+            <span class="tray-title">Select Card To Load Into Handshake:</span>
+            <span class="tray-sub">Click any card below to instant-test</span>
+          </div>
+          <div class="deck-scroll" id="terminal-deck-scroll">
+            <!-- Populated dynamically with cards -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: SOLUTIONS & INFRASTRUCTURE -->
+    <section class="section solutions-section" id="solutions">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <span>CORE CAPABILITIES</span>
+          </div>
+          <h2 class="section-title">
+            Engineering for <span class="font-script accent-script">every</span> dimension.
+          </h2>
+          <p class="section-desc max-w-2xl mx-auto">
+            From single bespoke titanium credentials to city-scale architectural contactless deployments, we build hardware that disappears into everyday life.
+          </p>
+        </div>
+
+        <div class="solutions-grid">
+          
+          <!-- Pillar 1 -->
+          <article class="solution-card">
+            <div class="solution-num">01 // CREDENTIALS</div>
+            <div class="solution-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                <line x1="2" y1="10" x2="22" y2="10"></line>
+              </svg>
+            </div>
+            <h3 class="solution-title">Bespoke Metal &amp; Carbon NFC</h3>
+            <p class="solution-text">
+              Weighted solid titanium, mirror-polished steel, and matte obsidian ceramic. Precision fiber-laser etched with isolated RF transmission windows for unhindered coupling.
+            </p>
+            <ul class="solution-features">
+              <li>18g – 24g weighted metal body</li>
+              <li>High-durability PVD &amp; DLC coating</li>
+              <li>Embedded multi-color LED pulse coil</li>
+            </ul>
+          </article>
+
+          <!-- Pillar 2 -->
+          <article class="solution-card">
+            <div class="solution-num">02 // ARCHITECTURE</div>
+            <div class="solution-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </div>
+            <h3 class="solution-title">Spatial &amp; Turnstile Access Nodes</h3>
+            <p class="solution-text">
+              Flush-mount architectural readers engineered for stone, marble, tinted glass, and custom turnstiles. Low-power, extreme read speed, and seamless building integration.
+            </p>
+            <ul class="solution-features">
+              <li>Sub-15ms authentication speed</li>
+              <li>OSDP v2 &amp; Wiegand multi-protocol</li>
+              <li>IP68 weather &amp; tamper resistant</li>
+            </ul>
+          </article>
+
+          <!-- Pillar 3 -->
+          <article class="solution-card">
+            <div class="solution-num">03 // AMBIENT IOT</div>
+            <div class="solution-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M8 12a4 4 0 0 1 8 0"></path>
+                <line x1="12" y1="12" x2="12" y2="16"></line>
+              </svg>
+            </div>
+            <h3 class="solution-title">Tap-to-Experience Packaging</h3>
+            <p class="solution-text">
+              Invisible NFC tags integrated into high-fashion garments, luxury spirit bottles, and physical art. Instant brand authenticity verification with zero mobile app required.
+            </p>
+            <ul class="solution-features">
+              <li>Tamper-loop physical seal detection</li>
+              <li>Zero-battery 13.56 MHz energy harvesting</li>
+              <li>Web3 &amp; Digital Twin certificate binding</li>
+            </ul>
+          </article>
+
+          <!-- Pillar 4 -->
+          <article class="solution-card">
+            <div class="solution-num">04 // ENCRYPTION</div>
+            <div class="solution-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </div>
+            <h3 class="solution-title">EAL6+ Cryptographic Tokens</h3>
+            <p class="solution-text">
+              Defense-grade NFC authentication tokens leveraging NXP NTAG424 DNA and MIFARE DESFire EV3 silicon. Mutual cryptographic authentication resistant to cloning.
+            </p>
+            <ul class="solution-features">
+              <li>SUN (Secure Unique NFC) dynamic URL hash</li>
+              <li>AES-128 / AES-256 hardware cipher</li>
+              <li>Zero-knowledge proof tap verification</li>
+            </ul>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: INTERACTIVE BESPOKE STUDIO (Configurator) -->
+    <section class="section configurator-section" id="configurator">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <span>BESPOKE STUDIO</span>
+          </div>
+          <h2 class="section-title">
+            Tailor your <span class="font-script accent-script">identity</span>.
+          </h2>
+          <p class="section-desc max-w-2xl mx-auto">
+            Design your custom contactless credential in real time. Select your base material, chip architecture, and engraving details.
+          </p>
+        </div>
+
+        <div class="configurator-wrap">
+          
+          <!-- Live 3D Interactive Card Preview -->
+          <div class="config-preview-panel">
+            <div class="config-card-3d" id="config-card-3d">
+              <div class="custom-card-body" id="custom-card-body">
+                
+                <!-- Front artwork overlay or texture -->
+                <div class="custom-card-art" id="custom-card-art">
+                  <img id="custom-card-base-img" src="images/CardArt-titanium-v8-2-lhN26PvF96.png" alt="Custom Preview Card" />
+                </div>
+
+                <div class="custom-card-sheen" id="custom-card-sheen"></div>
+
+                <!-- Custom Engravings -->
+                <div class="custom-card-overlay">
+                  <div class="overlay-top">
+                    <div class="overlay-brand">
+                      <img src="assets/logo-full-white-tight.png" alt="Contactless Brand" class="h-4 w-auto" />
+                    </div>
+                    <div class="overlay-chip-badge" id="preview-chip-badge">NTAG424 DNA</div>
+                  </div>
+
+                  <div class="overlay-mid">
+                    <div class="contactless-emblem-svg">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 8.5a8 8 0 0 1 0 7"></path>
+                        <path d="M8.5 7a5 5 0 0 1 0 10"></path>
+                        <circle cx="12" cy="12" r="1.5" fill="currentColor"></circle>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div class="overlay-bottom">
+                    <div class="custom-card-holder" id="preview-cardholder">ALEXANDER VANE</div>
+                    <div class="custom-card-serial" id="preview-serial">CTLS // 0048-9214-X</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="config-card-specs-bar">
+              <div class="spec-pill">
+                <span class="text-muted">Weight:</span>
+                <span id="spec-weight">22.4g Solid Titanium</span>
+              </div>
+              <div class="spec-pill">
+                <span class="text-muted">Range:</span>
+                <span>0 – 45mm Inductive</span>
+              </div>
+              <div class="spec-pill">
+                <span class="text-muted">Standard:</span>
+                <span>ISO 14443-A</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls / Options Panel -->
+          <div class="config-controls-panel">
+            
+            <form id="configurator-form" onsubmit="event.preventDefault();">
+              
+              <!-- Material Selection -->
+              <div class="control-group">
+                <label class="control-heading">01 / BASE MATERIAL &amp; FINISH</label>
+                <div class="material-options">
+                  <label class="material-radio">
+                    <input type="radio" name="material" value="titanium" checked data-img="images/CardArt-titanium-v8-2-lhN26PvF96.png" data-weight="22.4g Solid Titanium" data-name="Titanium V8 Space Black">
+                    <div class="radio-box">
+                      <span class="swatch swatch-titanium"></span>
+                      <div class="radio-text">
+                        <span class="name">Titanium Space Black</span>
+                        <span class="desc">Brushed aerospace titanium alloy</span>
+                      </div>
+                    </div>
+                  </label>
+
+                  <label class="material-radio">
+                    <input type="radio" name="material" value="obsidian" data-img="images/CardArt-apple-black-visa-PGMoMuOF9O.png" data-weight="19.8g Ceramic Obsidian" data-name="Matte Obsidian Stealth">
+                    <div class="radio-box">
+                      <span class="swatch swatch-obsidian"></span>
+                      <div class="radio-text">
+                        <span class="name">Matte Obsidian Ceramic</span>
+                        <span class="desc">Diamond-like anti-fingerprint surface</span>
+                      </div>
+                    </div>
+                  </label>
+
+                  <label class="material-radio">
+                    <input type="radio" name="material" value="liquidglass" data-img="images/CardArt-apple-cash-liquid-glass-DTHKHxAtyK.png" data-weight="16.5g Liquid Glass" data-name="Liquid Glass Ice">
+                    <div class="radio-box">
+                      <span class="swatch swatch-glass"></span>
+                      <div class="radio-text">
+                        <span class="name">Liquid Glass Composite</span>
+                        <span class="desc">Luminescent optical acrylic core</span>
+                      </div>
+                    </div>
+                  </label>
+
+                  <label class="material-radio">
+                    <input type="radio" name="material" value="silk" data-img="images/CardArt-coutts-silk-charge-card-updated-2026-design-rM23Nc49vc.png" data-weight="21.0g Silk Platinum" data-name="Coutts Silk Bespoke">
+                    <div class="radio-box">
+                      <span class="swatch swatch-silver"></span>
+                      <div class="radio-text">
+                        <span class="name">Silk Monochrome Platinum</span>
+                        <span class="desc">Intricate laser guilloché pattern</span>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Silicon Chip Architecture -->
+              <div class="control-group">
+                <label class="control-heading">02 / INTEGRATED NFC SILICON</label>
+                <div class="chip-options">
+                  <label class="chip-radio">
+                    <input type="radio" name="chip" value="NTAG424 DNA" checked data-badge="NTAG424 DNA">
+                    <div class="chip-box">
+                      <span class="chip-name">NXP NTAG424 DNA</span>
+                      <span class="chip-desc">AES-128 cryptographic tamper &amp; dynamic SUN hash</span>
+                    </div>
+                  </label>
+
+                  <label class="chip-radio">
+                    <input type="radio" name="chip" value="DESFire EV3" data-badge="DESFIRE EV3">
+                    <div class="chip-box">
+                      <span class="chip-name">MIFARE DESFire EV3</span>
+                      <span class="chip-desc">Multi-application spatial access &amp; smart transit</span>
+                    </div>
+                  </label>
+
+                  <label class="chip-radio">
+                    <input type="radio" name="chip" value="NTAG216" data-badge="NTAG216 888B">
+                    <div class="chip-box">
+                      <span class="chip-name">NTAG216 (888 Bytes)</span>
+                      <span class="chip-desc">Universal NFC Forum Type 2 high capacity storage</span>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Custom Laser Engraving Fields -->
+              <div class="control-group">
+                <label class="control-heading">03 / CUSTOM FIBER LASER ENGRAVING</label>
+                <div class="input-row">
+                  <div class="input-field">
+                    <label for="input-cardholder">Cardholder / Entity Name</label>
+                    <input type="text" id="input-cardholder" maxlength="26" value="ALEXANDER VANE" placeholder="E.G. ALEXANDER VANE" />
+                  </div>
+                  <div class="input-field">
+                    <label for="input-serial">Bespoke Identifier / Serial</label>
+                    <input type="text" id="input-serial" maxlength="20" value="CTLS // 0048-9214-X" placeholder="E.G. CTLS // 0048-9214-X" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Submit / Request Quote CTA -->
+              <div class="config-submit-box">
+                <button type="button" id="btn-request-brief" class="btn-primary w-full justify-center">
+                  <span>Generate Project Specification</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </button>
+                <p class="text-xs text-muted text-center mt-2">
+                  No minimum order for prototyping. Enterprise batch runs up to 100,000+ units.
+                </p>
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: NFC TECHNICAL ARCHITECTURE & BENCHMARKS -->
+    <section class="section tech-section" id="technology">
+      <div class="container">
+        
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <span>ELECTROMAGNETIC STANDARDS</span>
+          </div>
+          <h2 class="section-title">
+            Invisible physics. <span class="font-script accent-script">Uncompromising</span> security.
+          </h2>
+          <p class="section-desc max-w-2xl mx-auto">
+            Contactless operates at the intersection of inductive radio frequency coupling and hardware-isolated cryptography.
+          </p>
+        </div>
+
+        <div class="tech-grid">
+          
+          <div class="tech-spec-card">
+            <div class="tech-header">
+              <span class="tech-badge">CARRIER FREQUENCY</span>
+              <h3 class="tech-val">13.56 MHz</h3>
+            </div>
+            <p class="tech-text">
+              High-frequency (HF) ISM band conforming to ISO/IEC 14443 Type A/B and ISO/IEC 15693. Precision tuned antenna geometry ensures rapid resonant coupling even through metal shields.
+            </p>
+            <div class="tech-footer">
+              <span>Bandwidth: &plusmn;7 kHz</span>
+              <span>Modulation: 100% ASK</span>
+            </div>
+          </div>
+
+          <div class="tech-spec-card">
+            <div class="tech-header">
+              <span class="tech-badge">ZERO-CONTACT LATENCY</span>
+              <h3 class="tech-val">&lt; 12 ms</h3>
+            </div>
+            <p class="tech-text">
+              Ultra-rapid handshake execution. Handshake, anti-collision loop, cryptographic mutual authentication, and payload transfer occur faster than human touch perception.
+            </p>
+            <div class="tech-footer">
+              <span>Baud Rate: 106–848 kbps</span>
+              <span>Anti-Collision: Bit-frame</span>
+            </div>
+          </div>
+
+          <div class="tech-spec-card">
+            <div class="tech-header">
+              <span class="tech-badge">TAMPER DETECTION</span>
+              <h3 class="tech-val">SUN &times; AES</h3>
+            </div>
+            <p class="tech-text">
+              Secure Unique NFC (SUN) generates a fresh cryptographic CMAC cipher key on every physical tap. It is mathematically impossible to clone or replay the signal.
+            </p>
+            <div class="tech-footer">
+              <span>Cipher: AES-128 / AES-256</span>
+              <span>Common Criteria: EAL6+</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: EDITORIAL STATEMENT -->
+    <section class="editorial-section">
+      <div class="container text-center">
+        <blockquote class="editorial-quote">
+          &ldquo;True technological perfection is when the physical boundary dissolves, leaving only <span class="font-script accent-script">pure intention</span> and immediate response.&rdquo;
+        </blockquote>
+        <div class="editorial-author">
+          <div class="author-name">CONTACTLESS RESEARCH &amp; DESIGN LAB</div>
+          <div class="author-title">Zurich &bull; Tokyo &bull; San Francisco</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL: 3D CARD INSPECTOR -->
+  <div id="card-modal" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-dialog">
+      <button id="modal-close-btn" class="modal-close-btn" aria-label="Close modal">&times;</button>
+      
+      <div class="modal-content-grid">
+        
+        <!-- 3D Card Interactive Display -->
+        <div class="modal-card-display">
+          <div class="modal-card-flipper" id="modal-card-flipper">
+            <!-- Front Face -->
+            <div class="modal-face modal-face-front">
+              <img id="modal-card-img" src="" alt="Card Art Front" />
+              <div class="modal-face-glare" id="modal-face-glare"></div>
+            </div>
+            <!-- Back Face (Monochrome luxury card reverse) -->
+            <div class="modal-face modal-face-back">
+              <div class="card-magstripe"></div>
+              <div class="card-back-details">
+                <div class="card-signature-box">
+                  <div class="sig-lines"></div>
+                  <div class="sig-cvv">042</div>
+                </div>
+                <div class="card-back-antenna-wireframe">
+                  <div class="antenna-coil"></div>
+                  <div class="antenna-tag">13.56 MHz NFC LOOP EMBEDDED</div>
+                </div>
+                <div class="card-back-copy">
+                  CONTACTLESS ID &bull; AUTHENTICATED NFC CHIPSET &bull; ZERO FRICTION
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-flip-instructions">
+            <button id="modal-flip-toggle" class="btn-sm-secondary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+              </svg>
+              <span>Flip Card (Front / Back)</span>
+            </button>
+            <span class="text-xs text-muted">Drag or move mouse to tilt 3D</span>
+          </div>
+        </div>
+
+        <!-- Card Detailed Information -->
+        <div class="modal-info-panel">
+          <div class="modal-tag" id="modal-category">STEALTH &amp; LUXURY</div>
+          <h3 class="modal-title" id="modal-title">Titanium V8 Contactless</h3>
+          <p class="modal-desc" id="modal-desc">
+            Laser-machined from solid grade 5 aerospace titanium with an ultra-matte PVD ceramic coating. Fully integrated with high-performance cryptographic NFC silicon.
+          </p>
+
+          <div class="modal-specs-list">
+            <div class="modal-spec-row">
+              <span class="modal-spec-lbl">Material Composition:</span>
+              <span class="modal-spec-val" id="modal-spec-material">Solid Brushed Titanium Alloy</span>
+            </div>
+            <div class="modal-spec-row">
+              <span class="modal-spec-lbl">Integrated Silicon:</span>
+              <span class="modal-spec-val" id="modal-spec-chip">NXP NTAG424 DNA</span>
+            </div>
+            <div class="modal-spec-row">
+              <span class="modal-spec-lbl">Operating Frequency:</span>
+              <span class="modal-spec-val">13.56 MHz (HF ISM)</span>
+            </div>
+            <div class="modal-spec-row">
+              <span class="modal-spec-lbl">Cryptographic Protocol:</span>
+              <span class="modal-spec-val">AES-128 SUN Anti-Cloning</span>
+            </div>
+            <div class="modal-spec-row">
+              <span class="modal-spec-lbl">Read Range:</span>
+              <span class="modal-spec-val">0 to 45 mm (Omni-Directional)</span>
+            </div>
+          </div>
+
+          <div class="modal-actions-row">
+            <button id="modal-test-tap-btn" class="btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 8a12 12 0 0 1 0 8"></path>
+                <path d="M8 6a8 8 0 0 1 0 12"></path>
+                <circle cx="16" cy="12" r="2" fill="currentColor"></circle>
+              </svg>
+              <span>Load Into Tap Terminal</span>
+            </button>
+            <a href="#configurator" id="modal-custom-btn" class="btn-secondary">
+              <span>Customize This Edition</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: PROJECT INQUIRY / SPECIFICATION GENERATED -->
+  <div id="brief-modal" class="modal-backdrop" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-sm">
+      <button id="brief-close-btn" class="modal-close-btn" aria-label="Close dialog">&times;</button>
+      
+      <div class="brief-modal-content">
+        <div class="brief-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h3 class="brief-title">Project Specification Compiled</h3>
+        <p class="brief-desc text-muted">
+          Your bespoke contactless hardware specification is ready for review by our engineering team.
+        </p>
+
+        <div class="brief-summary-box" id="brief-summary-box">
+          <!-- Populated from configurator state -->
+        </div>
+
+        <div class="brief-actions">
+          <button id="brief-copy-btn" class="btn-secondary w-full justify-center">
+            <span>Copy Specification Summary</span>
+          </button>
+          <button id="brief-confirm-btn" class="btn-primary w-full justify-center mt-2">
+            <span>Transmit to Engineering &rarr;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      
+      <!-- Column 1: Brand & Philosophy -->
+      <div class="footer-col brand-col">
+        <div class="footer-logo">
+          <img src="assets/logo-full-white-tight.png" alt="Contactless Logo" class="h-6 w-auto" />
+        </div>
+        <p class="footer-tagline">
+          Crafted for the era of <span class="font-script accent-script text-white text-xl">pure touch</span>.
+        </p>
+        <p class="footer-about text-muted text-sm">
+          Pioneering near field intelligence, high-grade hardware credentials, and contactless interaction architecture for the world's most demanding physical and digital environments.
+        </p>
+      </div>
+
+      <!-- Column 2: Navigation -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">PORTFOLIO</h4>
+        <ul class="footer-links">
+          <li><a href="#showcase">The Vault (50+ Designs)</a></li>
+          <li><a href="#terminal">Live Tap Terminal</a></li>
+          <li><a href="#solutions">Physical Credentials</a></li>
+          <li><a href="#solutions">Architectural Nodes</a></li>
+          <li><a href="#configurator">Bespoke Studio</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Silicon & Standards -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">TECHNOLOGY</h4>
+        <ul class="footer-links">
+          <li><a href="#technology">13.56 MHz HF Carrier</a></li>
+          <li><a href="#technology">NXP NTAG424 DNA</a></li>
+          <li><a href="#technology">MIFARE DESFire EV3</a></li>
+          <li><a href="#technology">ISO/IEC 14443 Type A/B</a></li>
+          <li><a href="#technology">EAL6+ Cryptography</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Newsletter & Inquiries -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">DIRECT INQUIRIES</h4>
+        <p class="text-sm text-muted mb-4">
+          Receive confidential updates on new limited card editions and architectural sensor releases.
+        </p>
+        <form id="newsletter-form" class="newsletter-form" onsubmit="event.preventDefault();">
+          <div class="newsletter-input-group">
+            <input type="email" id="newsletter-email" required placeholder="Enter your email" aria-label="Email address" />
+            <button type="submit" class="newsletter-submit-btn" aria-label="Subscribe">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+          <div id="newsletter-success" class="newsletter-feedback hidden text-xs text-green mt-2">
+            Transmission acknowledged. Welcome to Contactless.
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Bottom Legal Bar -->
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <div class="footer-copy">
+          &copy; <span id="current-year">2026</span> Contactless Inc. All rights reserved. Precision near-field engineering.
+        </div>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Protocol</a>
+          <span class="sep">&bull;</span>
+          <a href="#">Security Audit</a>
+          <span class="sep">&bull;</span>
+          <a href="#">Hardware Warranty</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript App -->
+  <script src="main.js"></script>
+</body>
+</html>

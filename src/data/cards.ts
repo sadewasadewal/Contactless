@@ -1,0 +1,906 @@
+export interface NFCPayload {
+  action: string;
+  protocol: string;
+  uid: string;
+  dataRate: string;
+  security: string;
+}
+
+export interface CardItem {
+  id: string;
+  file: string;
+  title: string;
+  rawName: string;
+  category: 'Stealth & Luxury' | 'Liquid & Glass' | 'FinTech & Identity' | 'Pop Culture & Editions' | 'Minimalist Series' | string;
+  material: string;
+  chip: string;
+  frequency: string;
+  nfcPayload: NFCPayload;
+}
+
+export const CARDS_DATA: CardItem[] = [
+  {
+    "id": "CardArt-6YK8Ypb5ST",
+    "file": "images/CardArt-6YK8Ypb5ST.png",
+    "title": "6Yk8Ypb5St",
+    "rawName": "6YK8Ypb5ST",
+    "category": "Minimalist Series",
+    "material": "Precision Matte Anodized Alloy",
+    "chip": "NTAG215 Universal Contactless",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:36:59:4B:38:59:70",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-akatsuki-9inkQHKSpp",
+    "file": "images/CardArt-akatsuki-9inkQHKSpp.png",
+    "title": "Akatsuki",
+    "rawName": "akatsuki",
+    "category": "Pop Culture & Editions",
+    "material": "Ceramic Carbon Composite",
+    "chip": "MIFARE DESFire EV3",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:61:6B:61:74:73:75",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-american-express-platinum-card-scrooge-mcduck-ToNq4Sfi5g",
+    "file": "images/CardArt-american-express-platinum-card-scrooge-mcduck-ToNq4Sfi5g.png",
+    "title": "American Express Platinum Card Scrooge Mcduck",
+    "rawName": "american-express-platinum-card-scrooge-mcduck",
+    "category": "Pop Culture & Editions",
+    "material": "Ceramic Carbon Composite",
+    "chip": "MIFARE DESFire EV3",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:61:6D:65:72:69:63",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-apple-black-visa-PGMoMuOF9O",
+    "file": "images/CardArt-apple-black-visa-PGMoMuOF9O.png",
+    "title": "Apple Black Visa",
+    "rawName": "apple-black-visa",
+    "category": "Stealth & Luxury",
+    "material": "Brushed Titanium / Matte Obsidian",
+    "chip": "NTAG424 DNA Cryptographic",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:61:70:70:6C:65:2D",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-apple-cash-liquid-glass-DTHKHxAtyK",
+    "file": "images/CardArt-apple-cash-liquid-glass-DTHKHxAtyK.png",
+    "title": "Apple Cash Liquid Glass",
+    "rawName": "apple-cash-liquid-glass",
+    "category": "Liquid & Glass",
+    "material": "Frosted Acrylic & Luminescent Coil",
+    "chip": "NTAG216 High Capacity (888B)",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:61:70:70:6C:65:2D",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-apple-liquid-glass-r6381QWUmy",
+    "file": "images/CardArt-apple-liquid-glass-r6381QWUmy.png",
+    "title": "Apple Liquid Glass",
+    "rawName": "apple-liquid-glass",
+    "category": "Liquid & Glass",
+    "material": "Frosted Acrylic & Luminescent Coil",
+    "chip": "NTAG216 High Capacity (888B)",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:61:70:70:6C:65:2D",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-apple-oCvosRUL75",
+    "file": "images/CardArt-apple-oCvosRUL75.png",
+    "title": "Apple",
+    "rawName": "apple",
+    "category": "FinTech & Identity",
+    "material": "PVD Coated Stainless Steel",
+    "chip": "EAL6+ Secure Element",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:61:70:70:6C:65:58",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-apple-pay-rmxeNd5sxn",
+    "file": "images/CardArt-apple-pay-rmxeNd5sxn.png",
+    "title": "Apple Pay",
+    "rawName": "apple-pay",
+    "category": "FinTech & Identity",
+    "material": "PVD Coated Stainless Steel",
+    "chip": "EAL6+ Secure Element",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:61:70:70:6C:65:2D",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-bFr7kxlXOB (1)",
+    "file": "images/CardArt-bFr7kxlXOB (1).png",
+    "title": "Bfr7Kxlxob",
+    "rawName": "bFr7kxlXOB",
+    "category": "Minimalist Series",
+    "material": "Precision Matte Anodized Alloy",
+    "chip": "NTAG215 Universal Contactless",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:62:46:72:37:6B:78",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-bFr7kxlXOB",
+    "file": "images/CardArt-bFr7kxlXOB.png",
+    "title": "Bfr7Kxlxob",
+    "rawName": "bFr7kxlXOB",
+    "category": "Minimalist Series",
+    "material": "Precision Matte Anodized Alloy",
+    "chip": "NTAG215 Universal Contactless",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:62:46:72:37:6B:78",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-batman-card-WSKHtYfHDN",
+    "file": "images/CardArt-batman-card-WSKHtYfHDN.png",
+    "title": "Batman Card",
+    "rawName": "batman-card",
+    "category": "Pop Culture & Editions",
+    "material": "Ceramic Carbon Composite",
+    "chip": "MIFARE DESFire EV3",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:62:61:74:6D:61:6E",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-bbva-visa-infinite-bPNT6HwP0F",
+    "file": "images/CardArt-bbva-visa-infinite-bPNT6HwP0F.png",
+    "title": "Bbva Visa Infinite",
+    "rawName": "bbva-visa-infinite",
+    "category": "Stealth & Luxury",
+    "material": "Brushed Titanium / Matte Obsidian",
+    "chip": "NTAG424 DNA Cryptographic",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:62:62:76:61:2D:76",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-black-revolut-5jaGhZsUY9",
+    "file": "images/CardArt-black-revolut-5jaGhZsUY9.png",
+    "title": "Black Revolut",
+    "rawName": "black-revolut",
+    "category": "Stealth & Luxury",
+    "material": "Brushed Titanium / Matte Obsidian",
+    "chip": "NTAG424 DNA Cryptographic",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:62:6C:61:63:6B:2D",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-chiikawa-9tYsOEw5GV",
+    "file": "images/CardArt-chiikawa-9tYsOEw5GV.png",
+    "title": "Chiikawa",
+    "rawName": "chiikawa",
+    "category": "Pop Culture & Editions",
+    "material": "Ceramic Carbon Composite",
+    "chip": "MIFARE DESFire EV3",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:63:68:69:69:6B:61",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-commonbroke-bank-aEukNXJtlT",
+    "file": "images/CardArt-commonbroke-bank-aEukNXJtlT.png",
+    "title": "Commonbroke Bank",
+    "rawName": "commonbroke-bank",
+    "category": "Minimalist Series",
+    "material": "Precision Matte Anodized Alloy",
+    "chip": "NTAG215 Universal Contactless",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:63:6F:6D:6D:6F:6E",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-coutts-silk-card-Rq5oKKnYQL",
+    "file": "images/CardArt-coutts-silk-card-Rq5oKKnYQL.png",
+    "title": "Coutts Silk Card",
+    "rawName": "coutts-silk-card",
+    "category": "Stealth & Luxury",
+    "material": "Brushed Titanium / Matte Obsidian",
+    "chip": "NTAG424 DNA Cryptographic",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:63:6F:75:74:74:73",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-coutts-silk-charge-card-updated-2026-design-rM23Nc49vc",
+    "file": "images/CardArt-coutts-silk-charge-card-updated-2026-design-rM23Nc49vc.png",
+    "title": "Coutts Silk Charge Card Updated 2026 Design",
+    "rawName": "coutts-silk-charge-card-updated-2026-design",
+    "category": "Stealth & Luxury",
+    "material": "Brushed Titanium / Matte Obsidian",
+    "chip": "NTAG424 DNA Cryptographic",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:63:6F:75:74:74:73",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-cube-by-ganweiyun-work-D4tEN0M9ME",
+    "file": "images/CardArt-cube-by-ganweiyun-work-D4tEN0M9ME.png",
+    "title": "Cube By Ganweiyun Work",
+    "rawName": "cube-by-ganweiyun-work",
+    "category": "Liquid & Glass",
+    "material": "Frosted Acrylic & Luminescent Coil",
+    "chip": "NTAG216 High Capacity (888B)",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:63:75:62:65:2D:62",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-dollar-face-cn6EMTre6e",
+    "file": "images/CardArt-dollar-face-cn6EMTre6e.png",
+    "title": "Dollar Face",
+    "rawName": "dollar-face",
+    "category": "Minimalist Series",
+    "material": "Precision Matte Anodized Alloy",
+    "chip": "NTAG215 Universal Contactless",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:64:6F:6C:6C:61:72",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-dollar-face-silver-8TcKJ1MUVL",
+    "file": "images/CardArt-dollar-face-silver-8TcKJ1MUVL.png",
+    "title": "Dollar Face Silver",
+    "rawName": "dollar-face-silver",
+    "category": "Liquid & Glass",
+    "material": "Frosted Acrylic & Luminescent Coil",
+    "chip": "NTAG216 High Capacity (888B)",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:64:6F:6C:6C:61:72",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-dollar-sp-49MBawnHCW",
+    "file": "images/CardArt-dollar-sp-49MBawnHCW.png",
+    "title": "Dollar Sp",
+    "rawName": "dollar-sp",
+    "category": "Minimalist Series",
+    "material": "Precision Matte Anodized Alloy",
+    "chip": "NTAG215 Universal Contactless",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:64:6F:6C:6C:61:72",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-emirates-world-elite-JVZNHnwvFC",
+    "file": "images/CardArt-emirates-world-elite-JVZNHnwvFC.png",
+    "title": "Emirates World Elite",
+    "rawName": "emirates-world-elite",
+    "category": "Stealth & Luxury",
+    "material": "Brushed Titanium / Matte Obsidian",
+    "chip": "NTAG424 DNA Cryptographic",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:65:6D:69:72:61:74",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-futurama-fry-shut-up-and-take-my-money-W5CboiSt1U",
+    "file": "images/CardArt-futurama-fry-shut-up-and-take-my-money-W5CboiSt1U.png",
+    "title": "Futurama Fry Shut Up And Take My Money",
+    "rawName": "futurama-fry-shut-up-and-take-my-money",
+    "category": "Pop Culture & Editions",
+    "material": "Ceramic Carbon Composite",
+    "chip": "MIFARE DESFire EV3",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:66:75:74:75:72:61",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-g5lm22n1ym",
+    "file": "images/CardArt-g5lm22n1ym.png",
+    "title": "G5Lm22N1Ym",
+    "rawName": "g5lm22n1ym",
+    "category": "Minimalist Series",
+    "material": "Precision Matte Anodized Alloy",
+    "chip": "NTAG215 Universal Contactless",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:67:35:6C:6D:32:32",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-golf-v53n85hFcF",
+    "file": "images/CardArt-golf-v53n85hFcF.png",
+    "title": "Golf",
+    "rawName": "golf",
+    "category": "Minimalist Series",
+    "material": "Precision Matte Anodized Alloy",
+    "chip": "NTAG215 Universal Contactless",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:67:6F:6C:66:58:58",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-grand-theft-auto-vi-697UNrCoSu",
+    "file": "images/CardArt-grand-theft-auto-vi-697UNrCoSu.png",
+    "title": "Grand Theft Auto Vi",
+    "rawName": "grand-theft-auto-vi",
+    "category": "Pop Culture & Editions",
+    "material": "Ceramic Carbon Composite",
+    "chip": "MIFARE DESFire EV3",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:67:72:61:6E:64:2D",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-iFIrhUrKRZ",
+    "file": "images/CardArt-iFIrhUrKRZ.png",
+    "title": "Ifirhurkrz",
+    "rawName": "iFIrhUrKRZ",
+    "category": "Minimalist Series",
+    "material": "Precision Matte Anodized Alloy",
+    "chip": "NTAG215 Universal Contactless",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:69:46:49:72:68:55",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-icoca-hlpbs63beO",
+    "file": "images/CardArt-icoca-hlpbs63beO.png",
+    "title": "Icoca",
+    "rawName": "icoca",
+    "category": "FinTech & Identity",
+    "material": "PVD Coated Stainless Steel",
+    "chip": "EAL6+ Secure Element",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:69:63:6F:63:61:58",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-mario-kart-world-B1CWKuaC6s",
+    "file": "images/CardArt-mario-kart-world-B1CWKuaC6s.png",
+    "title": "Mario Kart World",
+    "rawName": "mario-kart-world",
+    "category": "Pop Culture & Editions",
+    "material": "Ceramic Carbon Composite",
+    "chip": "MIFARE DESFire EV3",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:6D:61:72:69:6F:2D",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-mastercard-by-ganweiyun-work-wgvjSMYKan",
+    "file": "images/CardArt-mastercard-by-ganweiyun-work-wgvjSMYKan.png",
+    "title": "Mastercard By Ganweiyun Work",
+    "rawName": "mastercard-by-ganweiyun-work",
+    "category": "Minimalist Series",
+    "material": "Precision Matte Anodized Alloy",
+    "chip": "NTAG215 Universal Contactless",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:6D:61:73:74:65:72",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-memerican-express-kQUln4Ibem",
+    "file": "images/CardArt-memerican-express-kQUln4Ibem.png",
+    "title": "Memerican Express",
+    "rawName": "memerican-express",
+    "category": "Minimalist Series",
+    "material": "Precision Matte Anodized Alloy",
+    "chip": "NTAG215 Universal Contactless",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:6D:65:6D:65:72:69",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-mercedes-benz-key-card-QyzfmmOqCa",
+    "file": "images/CardArt-mercedes-benz-key-card-QyzfmmOqCa.png",
+    "title": "Mercedes Benz Key Card",
+    "rawName": "mercedes-benz-key-card",
+    "category": "Stealth & Luxury",
+    "material": "Brushed Titanium / Matte Obsidian",
+    "chip": "NTAG424 DNA Cryptographic",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:6D:65:72:63:65:64",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-ocbc-7k1BP9L1VX",
+    "file": "images/CardArt-ocbc-7k1BP9L1VX.png",
+    "title": "Ocbc",
+    "rawName": "ocbc",
+    "category": "FinTech & Identity",
+    "material": "PVD Coated Stainless Steel",
+    "chip": "EAL6+ Secure Element",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:6F:63:62:63:58:58",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-palantir-pay-CyYmzITtTb",
+    "file": "images/CardArt-palantir-pay-CyYmzITtTb.png",
+    "title": "Palantir Pay",
+    "rawName": "palantir-pay",
+    "category": "FinTech & Identity",
+    "material": "PVD Coated Stainless Steel",
+    "chip": "EAL6+ Secure Element",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:70:61:6C:61:6E:74",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-pay-0x4ObE45tm",
+    "file": "images/CardArt-pay-0x4ObE45tm.png",
+    "title": "Pay",
+    "rawName": "pay",
+    "category": "Minimalist Series",
+    "material": "Precision Matte Anodized Alloy",
+    "chip": "NTAG215 Universal Contactless",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:70:61:79:58:58:58",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-phantom-wallet-MH2LeGmMqc",
+    "file": "images/CardArt-phantom-wallet-MH2LeGmMqc.png",
+    "title": "Phantom Wallet",
+    "rawName": "phantom-wallet",
+    "category": "FinTech & Identity",
+    "material": "PVD Coated Stainless Steel",
+    "chip": "EAL6+ Secure Element",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:70:68:61:6E:74:6F",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-poet-express-visa-infinite-privilege-v3PbZeRxLl",
+    "file": "images/CardArt-poet-express-visa-infinite-privilege-v3PbZeRxLl.png",
+    "title": "Poet Express Visa Infinite Privilege",
+    "rawName": "poet-express-visa-infinite-privilege",
+    "category": "Minimalist Series",
+    "material": "Precision Matte Anodized Alloy",
+    "chip": "NTAG215 Universal Contactless",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:70:6F:65:74:2D:65",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-porsche-911-gt3rs-visa-black-LrwWCqc1bh",
+    "file": "images/CardArt-porsche-911-gt3rs-visa-black-LrwWCqc1bh.png",
+    "title": "Porsche 911 Gt3Rs Visa Black",
+    "rawName": "porsche-911-gt3rs-visa-black",
+    "category": "Stealth & Luxury",
+    "material": "Brushed Titanium / Matte Obsidian",
+    "chip": "NTAG424 DNA Cryptographic",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:70:6F:72:73:63:68",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-revolut-EYkP20tqXo",
+    "file": "images/CardArt-revolut-EYkP20tqXo.png",
+    "title": "Revolut",
+    "rawName": "revolut",
+    "category": "FinTech & Identity",
+    "material": "PVD Coated Stainless Steel",
+    "chip": "EAL6+ Secure Element",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:72:65:76:6F:6C:75",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-revolut-ZOxVu2h8KI",
+    "file": "images/CardArt-revolut-ZOxVu2h8KI.png",
+    "title": "Revolut",
+    "rawName": "revolut",
+    "category": "FinTech & Identity",
+    "material": "PVD Coated Stainless Steel",
+    "chip": "EAL6+ Secure Element",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:72:65:76:6F:6C:75",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-revolut-planet-eLAo1elyyz",
+    "file": "images/CardArt-revolut-planet-eLAo1elyyz.png",
+    "title": "Revolut Planet",
+    "rawName": "revolut-planet",
+    "category": "FinTech & Identity",
+    "material": "PVD Coated Stainless Steel",
+    "chip": "EAL6+ Secure Element",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:72:65:76:6F:6C:75",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-robinhood-gold-dobVDGqvFd",
+    "file": "images/CardArt-robinhood-gold-dobVDGqvFd.png",
+    "title": "Robinhood Gold",
+    "rawName": "robinhood-gold",
+    "category": "FinTech & Identity",
+    "material": "PVD Coated Stainless Steel",
+    "chip": "EAL6+ Secure Element",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:72:6F:62:69:6E:68",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-snoopy-visa-YdgJvO2WJR",
+    "file": "images/CardArt-snoopy-visa-YdgJvO2WJR.png",
+    "title": "Snoopy Visa",
+    "rawName": "snoopy-visa",
+    "category": "Pop Culture & Editions",
+    "material": "Ceramic Carbon Composite",
+    "chip": "MIFARE DESFire EV3",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:73:6E:6F:6F:70:79",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-spacex-CHSGE0HTwE",
+    "file": "images/CardArt-spacex-CHSGE0HTwE.png",
+    "title": "Spacex",
+    "rawName": "spacex",
+    "category": "Minimalist Series",
+    "material": "Precision Matte Anodized Alloy",
+    "chip": "NTAG215 Universal Contactless",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:73:70:61:63:65:78",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-starbucks-drdG3AtyQq",
+    "file": "images/CardArt-starbucks-drdG3AtyQq.png",
+    "title": "Starbucks",
+    "rawName": "starbucks",
+    "category": "FinTech & Identity",
+    "material": "PVD Coated Stainless Steel",
+    "chip": "EAL6+ Secure Element",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:73:74:61:72:62:75",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-suica-tmSVE6Vnpl",
+    "file": "images/CardArt-suica-tmSVE6Vnpl.png",
+    "title": "Suica",
+    "rawName": "suica",
+    "category": "FinTech & Identity",
+    "material": "PVD Coated Stainless Steel",
+    "chip": "EAL6+ Secure Element",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:73:75:69:63:61:58",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-titanium-v8-2-lhN26PvF96",
+    "file": "images/CardArt-titanium-v8-2-lhN26PvF96.png",
+    "title": "Titanium V8 2",
+    "rawName": "titanium-v8-2",
+    "category": "Stealth & Luxury",
+    "material": "Brushed Titanium / Matte Obsidian",
+    "chip": "NTAG424 DNA Cryptographic",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:74:69:74:61:6E:69",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-trade-republic-HQFr12am99",
+    "file": "images/CardArt-trade-republic-HQFr12am99.png",
+    "title": "Trade Republic",
+    "rawName": "trade-republic",
+    "category": "FinTech & Identity",
+    "material": "PVD Coated Stainless Steel",
+    "chip": "EAL6+ Secure Element",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:74:72:61:64:65:2D",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-trade-republic-wolf-of-wallstreet-X776GL1qZC",
+    "file": "images/CardArt-trade-republic-wolf-of-wallstreet-X776GL1qZC.png",
+    "title": "Trade Republic Wolf Of Wallstreet",
+    "rawName": "trade-republic-wolf-of-wallstreet",
+    "category": "FinTech & Identity",
+    "material": "PVD Coated Stainless Steel",
+    "chip": "EAL6+ Secure Element",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:74:72:61:64:65:2D",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-uno-reverse-red-SWTnIApvLi",
+    "file": "images/CardArt-uno-reverse-red-SWTnIApvLi.png",
+    "title": "Uno Reverse Red",
+    "rawName": "uno-reverse-red",
+    "category": "Pop Culture & Editions",
+    "material": "Ceramic Carbon Composite",
+    "chip": "MIFARE DESFire EV3",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:75:6E:6F:2D:72:65",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-wise-platinum-card-new-iuaVfNAM3L",
+    "file": "images/CardArt-wise-platinum-card-new-iuaVfNAM3L.png",
+    "title": "Wise Platinum Card New",
+    "rawName": "wise-platinum-card-new",
+    "category": "FinTech & Identity",
+    "material": "PVD Coated Stainless Steel",
+    "chip": "EAL6+ Secure Element",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:77:69:73:65:2D:70",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  },
+  {
+    "id": "CardArt-xbEC0YkZ9m",
+    "file": "images/CardArt-xbEC0YkZ9m.png",
+    "title": "Xbec0Ykz9M",
+    "rawName": "xbEC0YkZ9m",
+    "category": "Minimalist Series",
+    "material": "Precision Matte Anodized Alloy",
+    "chip": "NTAG215 Universal Contactless",
+    "frequency": "13.56 MHz NFC Forum Type 4",
+    "nfcPayload": {
+      "action": "Instant Handshake Verified",
+      "protocol": "ISO/IEC 14443-A",
+      "uid": "04:78:62:45:43:30:59",
+      "dataRate": "424 kbit/s",
+      "security": "AES-128 CMAC Tamper Check"
+    }
+  }
+];
